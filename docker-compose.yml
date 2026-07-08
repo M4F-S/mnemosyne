@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: ankane/pgvector:latest
+    environment:
+      POSTGRES_USER: mnemosyne
+      POSTGRES_PASSWORD: mnemosyne
+      POSTGRES_DB: mnemosyne
+    ports:
+      - "15432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mnemosyne"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  mnemosyne:
+    build: .
+    environment:
+      MEMORY_DB_DSN: "postgresql://mnemosyne:mnemosyne@postgres:5432/mnemosyne"
+    volumes:
+      - ./mnemosyne-data:/app/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: ["python", "-c", "from mnemosyne import UnifiedMemorySystem; print('Mnemosyne ready')"]
+
+volumes:
+  postgres_data:
