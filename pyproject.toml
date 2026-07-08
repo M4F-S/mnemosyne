@@ -1,0 +1,68 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mnemosyne"
+version = "0.1.0"
+description = "AI Memory Platform — persistent memory for AI agents"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Mohamed Fathy", email = "Mmmmfathy7@gmail.com"}
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+requires-python = ">=3.9"
+dependencies = [
+    "psycopg2-binary>=2.9",
+    "pyyaml>=6.0",
+    "numpy>=1.24",
+    "sentence-transformers>=2.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "flake8>=5.0",
+    "black>=22.0",
+    "mypy>=1.0",
+    "pytest-postgresql>=5.0",
+    "types-PyYAML>=6.0",
+]
+
+[project.scripts]
+mnemosyne = "mnemosyne.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mnemosyne*"]
+
+[tool.black]
+line-length = 100
+target-version = ['py39']
+
+[tool.mypy]
+python_version = "3.9"
+warn_return_any = false
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+markers = [
+    "integration: marks tests as integration tests (requires PostgreSQL)",
+]
