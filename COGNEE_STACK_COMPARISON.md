@@ -1,14 +1,14 @@
-# Mnemosyne vs Cognee: Stack Comparison & Strategic Analysis
+# Palimpsest vs Cognee: Stack Comparison & Strategic Analysis
 
 **Date:** July 9, 2026  
-**Purpose:** Layer-by-layer comparison of Mnemosyne's architecture against Cognee's stack to validate our path, identify gaps, and sharpen differentiation  
+**Purpose:** Layer-by-layer comparison of Palimpsest's architecture against Cognee's stack to validate our path, identify gaps, and sharpen differentiation  
 **Status:** Post-Separation Analysis (Skill Repo ↔ Platform Repo now split)
 
 ---
 
 ## Executive Summary
 
-Cognee is a **multi-backend, infrastructure-sprawl-elimination** platform — they support EVERY vector store, graph DB, and relational backend, letting users choose. Mnemosyne is an **opinionated-default, Markdown-native Memory OS** — we optimize for a single, coherent stack with deliberate constraints that enable unique features competitors cannot replicate.
+Cognee is a **multi-backend, infrastructure-sprawl-elimination** platform — they support EVERY vector store, graph DB, and relational backend, letting users choose. Palimpsest is an **opinionated-default, Markdown-native Memory OS** — we optimize for a single, coherent stack with deliberate constraints that enable unique features competitors cannot replicate.
 
 **The verdict: We are on the right path, but must be explicit about WHY our opinionated choices are strategic advantages, not gaps.**
 
@@ -26,7 +26,7 @@ Cognee is a **multi-backend, infrastructure-sprawl-elimination** platform — th
 | **Milvus** | Enterprise distributed | Community-maintained, high-scale |
 | **Weaviate** | Enterprise hybrid | Community-maintained, vector+semantic |
 
-### What Mnemosyne Has
+### What Palimpsest Has
 | Backend | Role | Notes |
 |---------|------|-------|
 | **PGVector** | Primary | PostgreSQL extension, single-database architecture |
@@ -34,7 +34,7 @@ Cognee is a **multi-backend, infrastructure-sprawl-elimination** platform — th
 | **LanceDB** | Planned Phase 2 | For high-performance local/embedded analytics |
 
 ### Gap Analysis
-| Dimension | Cognee | Mnemosyne | Assessment |
+| Dimension | Cognee | Palimpsest | Assessment |
 |-----------|--------|-----------|------------|
 | Backend count | 6+ | 2 (PGVector + SQLite) | **GAP — but intentional** |
 | Production vector | Qdrant (optimized) | PGVector (adequate) | ⚠️ Moderate gap |
@@ -62,7 +62,7 @@ Cognee is a **multi-backend, infrastructure-sprawl-elimination** platform — th
 | **Memgraph** | In-memory | Ultra-fast, Cypher-compatible |
 | **ArcadeDB** | Multi-model | Document + graph unified |
 
-### What Mnemosyne Has
+### What Palimpsest Has
 | Backend | Role | Notes |
 |---------|------|-------|
 | **PostgreSQL recursive CTEs** | Current (skill) | Lightweight, no extra infra, handles ~10M edges |
@@ -71,7 +71,7 @@ Cognee is a **multi-backend, infrastructure-sprawl-elimination** platform — th
 | **ArcadeDB** | Future (>100M edges) | Multi-model unification, Phase 3+ |
 
 ### Gap Analysis
-| Dimension | Cognee | Mnemosyne | Assessment |
+| Dimension | Cognee | Palimpsest | Assessment |
 |-----------|--------|-----------|------------|
 | Dedicated graph DB | ✅ Neo4j/Neptune/Memgraph | ⚠️ PostgreSQL CTEs now, Neo4j planned | **TRANSITION GAP** |
 | Graph query language | Cypher | SQL CTEs → Cypher (planned) | ⚠️ Migration needed |
@@ -80,7 +80,7 @@ Cognee is a **multi-backend, infrastructure-sprawl-elimination** platform — th
 | Multi-model | ArcadeDB | Not yet | 🔴 Future gap |
 
 ### Critical Insight: Kuzu's Death Validates Our Path
-Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. This is a MAJOR disruption to Cognee's local-development story. Mnemosyne never depended on Kuzu — we use PostgreSQL CTEs for local and Neo4j for production. **This is a competitive advantage:** our local→production path is smoother than Cognee's post-Kuzu local story.
+Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. This is a MAJOR disruption to Cognee's local-development story. Palimpsest never depended on Kuzu — we use PostgreSQL CTEs for local and Neo4j for production. **This is a competitive advantage:** our local→production path is smoother than Cognee's post-Kuzu local story.
 
 ### Recommendation
 1. **Immediate:** Document PostgreSQL CTE → Neo4j migration path in `MIGRATION.md`
@@ -99,7 +99,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 | **PostgreSQL** | Production multi-tenant, structured schemas |
 | **Redis** | Real-time session management, caching |
 
-### What Mnemosyne Has
+### What Palimpsest Has
 | Backend | Role | Notes |
 |---------|------|-------|
 | **PostgreSQL 16** | Primary relational | Users, teams, RBAC, billing, connectors |
@@ -108,12 +108,12 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 | **MinIO** | Object storage | S3-compatible, file uploads, backups |
 
 ### Gap Analysis
-| Dimension | Cognee | Mnemosyne | Assessment |
+| Dimension | Cognee | Palimpsest | Assessment |
 |-----------|--------|-----------|------------|
 | Primary relational | PostgreSQL ✅ | PostgreSQL ✅ | **PARITY** |
 | Local fallback | SQLite ✅ | SQLite ✅ | **PARITY** |
 | Caching | Redis ✅ | Valkey ✅ | **PARITY** (Valkey = Redis fork, API-compatible) |
-| Object storage | Not built-in | MinIO ✅ | **MNEMOSYNE ADVANTAGE** |
+| Object storage | Not built-in | MinIO ✅ | **PALIMPSEST ADVANTAGE** |
 | Multi-tenant | ✅ | Planned ✅ | **PARITY (after Phase 1)** |
 
 ### Recommendation
@@ -131,7 +131,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 | **API Framework** | FastAPI | REST endpoints, auto-docs |
 | **ORM** | SQLAlchemy | Database abstractions |
 
-### What Mnemosyne Has
+### What Palimpsest Has
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | **Primary SDK** | Python 3.11+ | Skill + platform runtime |
@@ -143,13 +143,13 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 | **Scheduler** | APScheduler/Temporal (planned) | Periodic tasks, prospective memory triggers |
 
 ### Gap Analysis
-| Dimension | Cognee | Mnemosyne | Assessment |
+| Dimension | Cognee | Palimpsest | Assessment |
 |-----------|--------|-----------|------------|
 | Python maturity | ✅ Mature (80+ contributors) | ✅ Functional but smaller | ⚠️ Catching up |
 | Rust performance | ✅ PyO3 bindings | ❌ None | 🔴 **Significant gap** |
 | API framework | ✅ FastAPI | ❌ Not yet | 🔴 **Critical gap for platform** |
 | ORM | ✅ SQLAlchemy | ❌ Raw SQL | ⚠️ Technical debt risk |
-| Frontend | ❌ No first-party UI | ✅ Next.js planned | **MNEMOSYNE ADVANTAGE** |
+| Frontend | ❌ No first-party UI | ✅ Next.js planned | **PALIMPSEST ADVANTAGE** |
 | Task queue | ✅ Celery | ✅ Planned | **PARITY (after Phase 1)** |
 
 ### Recommendation
@@ -170,7 +170,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 | **LLM Router** | LiteLLM | Unified translation for ANY provider (OpenAI, Anthropic, Gemini, Azure, Ollama) |
 | **Format support** | 38+ formats | PDF, CSV, JSON, audio, images, code, SQL, APIs |
 
-### What Mnemosyne Has
+### What Palimpsest Has
 | Component | Technology | Purpose |
 |-----------|-----------|---------|
 | **Document parsing** | ❌ No Unstructured/Firecrawl | Manual markdown/YAML only |
@@ -180,7 +180,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 | **Ingestion** | Manual (`add_memory()`) | No automated connectors yet |
 
 ### Gap Analysis
-| Dimension | Cognee | Mnemosyne | Assessment |
+| Dimension | Cognee | Palimpsest | Assessment |
 |-----------|--------|-----------|------------|
 | Document parsing | ✅ Unstructured/Firecrawl | ❌ None | 🔴 **Major gap** |
 | Schema enforcement | ✅ Pydantic/BAML/Instructor | ✅ Pydantic only | ⚠️ Partial parity |
@@ -192,7 +192,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 **This is our biggest functional gap.** However, it's also where our differentiation is STRONGEST:
 
 1. **Cognee's approach:** Ingest everything (38 formats), store in DB, build graph from DB
-2. **Mnemosyne's approach:** Markdown is the source of truth. Files ARE the database. Git-diffable, human-readable, Obsidian-compatible.
+2. **Palimpsest's approach:** Markdown is the source of truth. Files ARE the database. Git-diffable, human-readable, Obsidian-compatible.
 
 **Strategic decision:** Do NOT chase Cognee's 38-format ingestion. Instead:
 - **Month 1–2:** Add LiteLLM for provider flexibility (easy win, high impact)
@@ -200,7 +200,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 - **Month 3–4:** Add Firecrawl for web→Markdown conversion (bridges the gap without losing our substrate)
 - **Month 4–6:** Selective connectors (Gmail, GitHub, Slack) that OUTPUT Markdown, not raw DB storage
 
-**Key insight:** Cognee stores data in opaque databases. Mnemosyne stores data in human-readable Markdown that lives in YOUR file system. This is a philosophical difference, not just technical.
+**Key insight:** Cognee stores data in opaque databases. Palimpsest stores data in human-readable Markdown that lives in YOUR file system. This is a philosophical difference, not just technical.
 
 ---
 
@@ -218,7 +218,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 | **n8n** | ✅ First-party | No-code memory workflows |
 | **HTTP REST API** | ✅ Full | `/add`, `/cognify`, `/memify`, `/search` |
 
-### What Mnemosyne Has
+### What Palimpsest Has
 | Component | Status | Notes |
 |-----------|--------|-------|
 | **MCP Server** | ✅ stdio (skill) | 4 tools: remember, recall, improve, forget |
@@ -229,7 +229,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 | **Cursor/Claude Code** | ✅ Via MCP | Works via stdio MCP |
 
 ### Gap Analysis
-| Dimension | Cognee | Mnemosyne | Assessment |
+| Dimension | Cognee | Palimpsest | Assessment |
 |-----------|--------|-----------|------------|
 | MCP maturity | ✅ 14 tools, stdio+HTTP | ✅ 4 tools, stdio only | ⚠️ Cognee has more tools |
 | HTTP API | ✅ Full REST | ❌ Not yet | 🔴 **Critical gap** |
@@ -245,27 +245,27 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 
 ---
 
-## Differentiation Map: Where Mnemosyne Beats Cognee
+## Differentiation Map: Where Palimpsest Beats Cognee
 
-| Feature | Mnemosyne | Cognee | Winner |
+| Feature | Palimpsest | Cognee | Winner |
 |---------|-----------|--------|--------|
-| **Markdown as source of truth** | ✅ Native | ❌ DB-only | **Mnemosyne** |
-| **Prospective memory (scheduled reminders)** | ✅ Unique | ❌ None | **Mnemosyne** |
-| **Emotional salience scoring** | ✅ Full multi-factor | ⚠️ Partial | **Mnemosyne** |
-| **Memory versioning (git-style)** | ✅ Planned | ❌ None | **Mnemosyne** |
-| **Security gates (SMSR-certified)** | ✅ Planned | ⚠️ Basic | **Mnemosyne** |
-| **Plugin marketplace** | ✅ Planned (Month 3) | ❌ None | **Mnemosyne** |
-| **35-minute context rotation** | ✅ Unique | ❌ None | **Mnemosyne** |
-| **NIST-ready compliance** | ✅ JWT + RBAC + audit | ❌ 44% unauthenticated MCP | **Mnemosyne** |
-| **First-party UI (Next.js)** | ✅ Planned | ❌ CLI only | **Mnemosyne** |
-| **Obsidian compatibility** | ✅ Native | ❌ None | **Mnemosyne** |
+| **Markdown as source of truth** | ✅ Native | ❌ DB-only | **Palimpsest** |
+| **Prospective memory (scheduled reminders)** | ✅ Unique | ❌ None | **Palimpsest** |
+| **Emotional salience scoring** | ✅ Full multi-factor | ⚠️ Partial | **Palimpsest** |
+| **Memory versioning (git-style)** | ✅ Planned | ❌ None | **Palimpsest** |
+| **Security gates (SMSR-certified)** | ✅ Planned | ⚠️ Basic | **Palimpsest** |
+| **Plugin marketplace** | ✅ Planned (Month 3) | ❌ None | **Palimpsest** |
+| **35-minute context rotation** | ✅ Unique | ❌ None | **Palimpsest** |
+| **NIST-ready compliance** | ✅ JWT + RBAC + audit | ❌ 44% unauthenticated MCP | **Palimpsest** |
+| **First-party UI (Next.js)** | ✅ Planned | ❌ CLI only | **Palimpsest** |
+| **Obsidian compatibility** | ✅ Native | ❌ None | **Palimpsest** |
 | **Multi-backend flexibility** | ❌ Opinionated | ✅ 6+ vector, 5+ graph | **Cognee** |
 | **Ingestion breadth (38 formats)** | ❌ 3 formats | ✅ 38+ formats | **Cognee** |
 | **Rust performance bindings** | ❌ None | ✅ PyO3 | **Cognee** |
 | **Enterprise graph scale** | ❌ ~100M edges | ✅ Unlimited | **Cognee** |
 | **Community size** | ❌ New | ✅ 24.8K stars, 80+ contributors | **Cognee** |
 
-**Score: Mnemosyne 10 unique features vs Cognee 5 — but Cognee's 5 are "table stakes" for enterprise adoption.**
+**Score: Palimpsest 10 unique features vs Cognee 5 — but Cognee's 5 are "table stakes" for enterprise adoption.**
 
 ---
 
@@ -274,7 +274,7 @@ Cognee's default local graph DB (Kuzu) was **acquired by Apple and archived**. T
 ### ✅ YES — With Caveats
 
 **Why we're right:**
-1. **Opinionated defaults beat configurability for startups.** Cognee's multi-backend approach is correct for a VC-funded company serving 70+ enterprises. Mnemosyne's single-database approach is correct for a bootstrapped product finding product-market-fit.
+1. **Opinionated defaults beat configurability for startups.** Cognee's multi-backend approach is correct for a VC-funded company serving 70+ enterprises. Palimpsest's single-database approach is correct for a bootstrapped product finding product-market-fit.
 2. **Markdown-native is a moat.** Cognee cannot easily add "files as source of truth" — their entire architecture assumes DB-centric storage. This is a durable differentiator.
 3. **Prospective memory is genuinely unique.** No competitor (Cognee, Mem0, Zep, Letta, Evermind) has scheduled future reminders. This is our #1 demo feature.
 4. **Kuzu's death hurt Cognee more than us.** We never depended on it.
@@ -316,14 +316,14 @@ Month 3 (Differentiation):
 
 ## Conclusion
 
-**Mnemosyne is NOT trying to be "Cognee but smaller."** We are building a different CATEGORY of product:
+**Palimpsest is NOT trying to be "Cognee but smaller."** We are building a different CATEGORY of product:
 
 - **Cognee = Infrastructure layer** ("use any backend you want")
-- **Mnemosyne = Memory OS** ("your files ARE your memory, with intelligence layered on top")
+- **Palimpsest = Memory OS** ("your files ARE your memory, with intelligence layered on top")
 
 Our stack gaps (no Qdrant, no Milvus, no Rust) are **deliberate constraints** that enable our unique features (Markdown-native, prospective memory, emotional salience). The gaps that ARE genuine risks (no FastAPI, no LiteLLM, no ORM) are all closable within 60 days.
 
-**The bet:** Users will choose Mnemosyne not because it has more backends, but because it has a fundamentally different relationship with their data — human-readable, file-based, scheduled, and emotionally aware.
+**The bet:** Users will choose Palimpsest not because it has more backends, but because it has a fundamentally different relationship with their data — human-readable, file-based, scheduled, and emotionally aware.
 
 ---
 
