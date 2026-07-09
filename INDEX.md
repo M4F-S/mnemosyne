@@ -1,7 +1,7 @@
-# Mnemosyne Research & Plan Index
+# Palimpsest Research & Plan Index
 
-**Repository:** `github.com/M4F-S/mnemosyne`
-**Skill Repo:** `github.com/M4F-S/kimi-mnemosyne-skill`
+**Repository:** `github.com/M4F-S/palimpsest`
+**Skill Repo:** `github.com/M4F-S/kimi-palimpsest-skill`
 **Hackathon Prototype:** `github.com/M4F-S/unified-memory`
 
 ---
@@ -10,7 +10,7 @@
 
 | Document | Size | Description |
 |----------|------|-------------|
-| **[MNEMOSYNE_V3_REBUILD_PLAN.md](MNEMOSYNE_V3_REBUILD_PLAN.md)** | 112 KB | **The complete rebuild plan.** 7 phases, 12 months, concrete schemas, APIs, security architecture, pricing, branding, success metrics. |
+| **[PALIMPSEST_V3_REBUILD_PLAN.md](PALIMPSEST_V3_REBUILD_PLAN.md)** | 112 KB | **The complete rebuild plan.** 7 phases, 12 months, concrete schemas, APIs, security architecture, pricing, branding, success metrics. |
 
 ---
 
@@ -61,8 +61,8 @@
 
 | Repo | Purpose | Link |
 |------|---------|------|
-| `mnemosyne` | **Platform** — Full project, research, docs, infrastructure | github.com/M4F-S/mnemosyne |
-| `kimi-mnemosyne-skill` | **Kimi Skill** — Minimal installable skill for Kimi AI | github.com/M4F-S/kimi-mnemosyne-skill |
+| `palimpsest` | **Platform** — Full project, research, docs, infrastructure | github.com/M4F-S/palimpsest |
+| `kimi-palimpsest-skill` | **Kimi Skill** — Minimal installable skill for Kimi AI | github.com/M4F-S/kimi-palimpsest-skill |
 | `unified-memory` | **Hackathon Prototype** — NEAR blockchain, Cloudflare Workers, 20+ connectors | github.com/M4F-S/unified-memory |
 
 ---
